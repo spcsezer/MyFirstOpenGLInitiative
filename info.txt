@@ -1,0 +1,95 @@
+SpotLight lesson at 42.30 you can do flashlight to your camera
+
+
+
+We did light calculations for more smooth objects. You can do another calculations for flatter objects.
+
+
+
+
+
+
+
+Tabii! OpenGL'de kullanılan yaygın **ışıklandırma modelleri** ve tekniklerini aşağıda sıralıyorum. Bu modeller, gerçekçi sahneler oluşturmak veya belirli görsel efektler elde etmek için kullanılır:
+
+### 1. **Flat Shading (Düz Gölgelendirme)**
+- **Açıklama**: Tüm poligon yüzeyi için tek bir normal vektör kullanılır. Işıklandırma hesaplaması bir kez yapılır ve yüzey boyunca sabit kalır.
+- **Kullanım Alanı**: Düşük poligonlu veya retro tarz görseller.
+- **Avantajları**: Hesaplama açısından hafif ve hızlı.
+- **Dezavantajları**: Keskin, gerçek dışı kenarlar oluşturur.
+
+---
+
+### 2. **Gouraud Shading**
+- **Açıklama**: Her verteks için aydınlatma hesaplaması yapılır ve poligonlar boyunca lineer interpolasyonla gölgelendirme uygulanır.
+- **Kullanım Alanı**: Gerçekçi gölgeler, yumuşak geçişler.
+- **Avantajları**: Daha yumuşak görünümler sağlar, hızlıdır.
+- **Dezavantajları**: Spot ışığı gibi keskin detaylar kaybolabilir.
+
+---
+
+### 3. **Phong Shading**
+- **Açıklama**: Her piksel (fragment) için aydınlatma hesaplaması yapılır. Normaller interpolasyonla hesaplanır.
+- **Kullanım Alanı**: Yüksek kaliteli gölgelendirme.
+- **Avantajları**: Daha keskin, doğru ışık detayları oluşturur.
+- **Dezavantajları**: Daha yüksek hesaplama maliyeti.
+
+---
+
+### 4. **Blinn-Phong Shading**
+- **Açıklama**: Phong Shading'in bir varyasyonudur. Parlaklık (specular) hesaplaması için normal yerine bir "yarı vektör" kullanır.
+- **Kullanım Alanı**: Çoğu modern OpenGL uygulamasında yaygın olarak kullanılır.
+- **Avantajları**: Daha hızlı ve daha kararlı parlaklık hesaplaması.
+- **Dezavantajları**: Hala Phong'a benzer hesaplama yüküne sahiptir.
+
+---
+
+### 5. **Toon Shading (Cartoon Shading)**
+- **Açıklama**: Işık seviyelerini keskin adımlara böler, böylece sahne bir çizgi film efekti alır.
+- **Kullanım Alanı**: Cel-shading tarzı görseller.
+- **Avantajları**: Yaratıcı ve sanatsal stil sağlar.
+- **Dezavantajları**: Gerçekçi ışıklandırmadan uzak.
+
+---
+
+### 6. **Cook-Torrance Modeli**
+- **Açıklama**: Fiziksel temelli ışıklandırma (PBR - Physically Based Rendering) yaklaşımıdır. Mikro yüzeylerin etkisini hesaba katar.
+- **Kullanım Alanı**: Metal ve yansıtıcı yüzeyler.
+- **Avantajları**: Gerçekçi malzeme simülasyonu.
+- **Dezavantajları**: Daha karmaşık ve hesaplama yoğun.
+
+---
+
+### 7. **Lambertian Lighting (Diffuse Lighting)**
+- **Açıklama**: Yüzeyin normaline dayalı olarak ışık yoğunluğunu hesaplar. Işığın kaynaktan gelen açısı ve yüzeyle yaptığı açı önemlidir.
+- **Kullanım Alanı**: Basit, mat yüzeyler.
+- **Avantajları**: Basit ve hızlı.
+- **Dezavantajları**: Parlaklık ve yansıma içermez.
+
+---
+
+### 8. **Ambient Lighting (Çevresel Işıklandırma)**
+- **Açıklama**: Sahnenin her yerini eşit şekilde aydınlatan bir ışık türüdür. Yön veya mesafe hesaplanmaz.
+- **Kullanım Alanı**: Temel aydınlatma, gölgeli bölgelerde detay kaybını önler.
+- **Avantajları**: Hesaplama açısından basit.
+- **Dezavantajları**: Gerçekçi olmayan bir etki yaratabilir.
+
+---
+
+### 9. **Image-Based Lighting (IBL)**
+- **Açıklama**: Çevresel ışıklandırma için HDRI (High Dynamic Range Image) kullanır. Çevredeki ışık kaynakları simüle edilir.
+- **Kullanım Alanı**: Gerçekçi çevre yansımaları.
+- **Avantajları**: Yüksek gerçekçilik.
+- **Dezavantajları**: Karmaşık hesaplama ve veri ihtiyacı.
+
+---
+
+### 10. **Physically Based Rendering (PBR)**
+- **Açıklama**: Malzemelerin fiziksel özelliklerine (albedo, metalness, roughness) dayalı ışıklandırma.
+- **Kullanım Alanı**: Modern oyun motorları ve gerçekçi simülasyonlar.
+- **Avantajları**: Gerçek dünya fiziğine dayalı yüksek doğruluk.
+- **Dezavantajları**: Daha karmaşık shader'lar ve veriler gerektirir.
+
+---
+
+Bu modellerden hangisinin kullanılacağı, projenin gereksinimlerine ve donanımın işlem gücüne bağlı olarak değişir. Özellikle modern uygulamalarda, **PBR** veya **Blinn-Phong** gibi teknikler yaygın olarak tercih edilir.
